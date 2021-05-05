@@ -24,6 +24,8 @@ export class RangeDatePicker extends React.Component<
     theme: defaultRangeTheme,
     weekend: [6],
     isRenderingButtons: true,
+    showModal: true,
+    showInputs: true,
   };
 
   constructor(props) {
@@ -76,6 +78,15 @@ export class RangeDatePicker extends React.Component<
         rangeDays,
         rangeStatus,
       });
+
+      if (this.props.onChangeDays) {
+        this.props.onChangeDays({
+          start: start,
+          end: end,
+          startX: start.format("x"),
+          endX: end.format("x"),
+        });
+      }
     }
     if (!prevState.cloneDays.isSame(this.state.cloneDays)) {
       const { monthName, days } = daysInMonth(this.state.cloneDays);
@@ -197,61 +208,66 @@ export class RangeDatePicker extends React.Component<
     });
   };
 
+  public RenderDays = () => (
+    <Days
+      days={this.state.days}
+      monthName={this.state.monthName}
+      rangeDays={this.state.rangeDays}
+      selectedPickerStatus={this.state.rangeStatus}
+      daysEventListeners={this.daysEventListeners}
+      holiday={this.props.weekend}
+      theme={this.props.theme}
+      isSelecting={this.state.isSelecting}
+      isRenderingButtons={this.props.isRenderingButtons}
+      ArrowLeft={this.props.ArrowLeft}
+      ArrowRight={this.props.ArrowRight}
+      increaseMonth={() => this.changeMonth(1)}
+      decreaseMonth={() => this.changeMonth(-1)}
+      onCancelButton={this.cancelButton}
+      onSubmitButton={this.submitButton}
+    />
+  );
+
   public render(): React.ReactNode {
-    const {
-      modalZIndex,
-      ArrowRight,
-      ArrowLeft,
-      theme,
-      fromLabel,
-      toLabel,
-    } = this.props;
+    const { modalZIndex, fromLabel, toLabel } = this.props;
     return (
       <RangeDateDiv>
         <label>{fromLabel}</label>
-        <div>
-          <MaskedInput
-            className="rdp__input--start"
-            data-testid="input-start"
-            value={this.state.startDate.format("jYYYY/jMM/jDD")}
-            onClick={this.toggleModalOpen}
-            onChange={e => this.changeInputValues(e)}
-            mask={inputFaDateMask}
-          />
-        </div>
-        <label>{toLabel}</label>
-        <div>
-          <MaskedInput
-            className="rdp__input--end"
-            data-testid="input-end"
-            value={this.state.endDate.format("jYYYY/jMM/jDD")}
-            onChange={e => this.changeInputValues(e, false)}
-            mask={inputFaDateMask}
-          />
-        </div>
-        <Modal
-          isOpen={this.state.isOpenModal}
-          toggleOpen={this.toggleModalOpen}
-          modalZIndex={modalZIndex}
-        >
-          <Days
-            days={this.state.days}
-            monthName={this.state.monthName}
-            rangeDays={this.state.rangeDays}
-            selectedPickerStatus={this.state.rangeStatus}
-            daysEventListeners={this.daysEventListeners}
-            holiday={this.props.weekend}
-            theme={theme}
-            isSelecting={this.state.isSelecting}
-            isRenderingButtons={this.props.isRenderingButtons}
-            ArrowLeft={ArrowLeft}
-            ArrowRight={ArrowRight}
-            increaseMonth={() => this.changeMonth(1)}
-            decreaseMonth={() => this.changeMonth(-1)}
-            onCancelButton={this.cancelButton}
-            onSubmitButton={this.submitButton}
-          />
-        </Modal>
+        {this.props.showInputs && (
+          <>
+            <div>
+              <MaskedInput
+                className="rdp__input--start"
+                data-testid="input-start"
+                value={this.state.startDate.format("jYYYY/jMM/jDD")}
+                onClick={this.toggleModalOpen}
+                onChange={e => this.changeInputValues(e)}
+                mask={inputFaDateMask}
+              />
+            </div>
+            <label>{toLabel}</label>
+            <div>
+              <MaskedInput
+                className="rdp__input--end"
+                data-testid="input-end"
+                value={this.state.endDate.format("jYYYY/jMM/jDD")}
+                onChange={e => this.changeInputValues(e, false)}
+                mask={inputFaDateMask}
+              />
+            </div>
+          </>
+        )}
+
+        {this.props.showModal && (
+          <Modal
+            isOpen={this.state.isOpenModal}
+            toggleOpen={this.toggleModalOpen}
+            modalZIndex={modalZIndex}
+          >
+            <this.RenderDays />
+          </Modal>
+        )}
+        {!this.props.showModal && <this.RenderDays />}
       </RangeDateDiv>
     );
   }

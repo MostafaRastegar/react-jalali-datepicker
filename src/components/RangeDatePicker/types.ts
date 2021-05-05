@@ -12,10 +12,13 @@ export interface IRangeDatePickerProps {
   theme?: IRangeDatePickerTheme;
   weekend?: number[];
   isRenderingButtons?: boolean;
-  onClickSubmitButton?: (arg: any) => any;
   fromLabel: string;
   toLabel: string;
   open?: boolean;
+  showModal?: boolean;
+  showInputs?: boolean;
+  onClickSubmitButton?: (arg: any) => any;
+  onChangeDays?: (arg?: any) => any;
   onToggle?: (arg?: boolean) => any;
 }
 

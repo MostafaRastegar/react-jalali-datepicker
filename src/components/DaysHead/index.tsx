@@ -26,7 +26,9 @@ export const DaysHead: React.FunctionComponent<IDaysHeadProps> = ({
   }
   return (
     <DaysHeadContainer data-testid="days-head">
-      <HeadRange data-testid="days-head-range"><div>{datePickerStatus}</div></HeadRange>
+      <HeadRange data-testid="days-head-range">
+        <div>بازه انتخابی: {datePickerStatus}</div>
+      </HeadRange>
       <HeadTitle data-testid="days-head-title">
         <ArrowRight onClick={decreaseMonth} />
         <p data-testid="days-head-title-text">{monthName}</p>

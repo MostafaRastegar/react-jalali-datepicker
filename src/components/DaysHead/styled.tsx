@@ -27,7 +27,8 @@ export const HeadTitle = styled("div")`
   color: ${props => props.theme.headTitleColor};
 
   svg {
-    fill: ${props => props.theme.headTitleColor};
+    fill: ${props => props.theme.startRangeBackColor};
+    font-size: 24px;
   }
   @media (min-width: 768px) {
     font-size: 1.618rem;
@@ -35,7 +36,7 @@ export const HeadTitle = styled("div")`
 `;
 
 export const HeadRange = styled("div")`
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid rgba(28, 28, 28, 0.1);
   width: 100%;
   text-align: center;
   div {
