@@ -26,12 +26,12 @@ export const DaysHead: React.FunctionComponent<IDaysHeadProps> = ({
   }
   return (
     <DaysHeadContainer data-testid="days-head">
+      <HeadRange data-testid="days-head-range"><div>{datePickerStatus}</div></HeadRange>
       <HeadTitle data-testid="days-head-title">
         <ArrowRight onClick={decreaseMonth} />
         <p data-testid="days-head-title-text">{monthName}</p>
         <ArrowLeft onClick={increaseMonth} />
       </HeadTitle>
-      <HeadRange data-testid="days-head-range">{datePickerStatus}</HeadRange>
     </DaysHeadContainer>
   );
 };
