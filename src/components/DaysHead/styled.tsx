@@ -14,14 +14,15 @@ export const DaysHeadContainer = styled("div")`
     min-height: 114px;
   }
 `;
-export const HeadTitle = styled("h4")`
+export const HeadTitle = styled("div")`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 0 ${8 / 16}rem;
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 15px;
+  font-weight: bold;
   text-align: center;
   color: ${props => props.theme.headTitleColor};
 
@@ -33,17 +34,15 @@ export const HeadTitle = styled("h4")`
   }
 `;
 
-export const HeadRange = styled("h3")`
-  margin: 0.5rem 0;
-  font-size: 1.5rem;
-  border-radius: ${20 / 16}rem;
-  padding: 0 ${16 / 16}rem;
-  background-color: ${props => props.theme.headRangeBackColor};
-  color: ${props => props.theme.headRangeColor};
-
-  @media (min-width: 768px) {
-    margin: 1rem 0;
-    font-size: 1.618rem;
+export const HeadRange = styled("div")`
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  text-align: center;
+  div {
+    margin: 0.5rem 0;
+    font-size: 13px;
+    color: ${props => props.theme.headRangeColor};
+    font-weight: 300;
   }
 `;
 

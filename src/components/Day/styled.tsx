@@ -6,7 +6,7 @@ export const NormalDay = styled("li")<IDayProps>`
   cursor: pointer;
   position: relative;
   transform-style: preserve-3d;
-  border-radius: ${props => props.theme.daysRound};
+  border-radius: 0;
   color: ${props =>
     props.selectedDay ? props.theme.selectDayColor : props.theme.daysColor};
   background-color: ${props =>
@@ -28,43 +28,15 @@ export const StartEndRangeDay = styled(NormalDay)<IDayProps>`
   color: ${props => props.theme[`${props.startEndRange.status}Color`]};
   background-color: ${props =>
     props.theme[`${props.startEndRange.status}BackColor`]};
-  border-radius: ${props =>
-    props.startEndRange.status === "continueRange" ? 0 : props.theme.daysRound};
   z-index: ${props => props.startEndRange.status === "continueRange" && 100};
   ${props =>
     props.startEndRange.status === "startRange" &&
     `
-			&:after {
-				content: "";
-				display: block;
-				width: 25px;
-				height: 40px;
-				position: absolute;
-				top: 45px;
-				background-color: ${props.theme.continueRangeBackColor}
-				transform: translate3d(-10px, -45px, -1px);
-				
-				@media (min-width: 576px) {
-					height: 45px;
-				}
-			}
-		`};
+    border-radius: 0 ${props.theme.daysRound} ${props.theme.daysRound} 0;
+    `};
   ${props =>
     props.startEndRange.status === "endRange" &&
     `
-			&:after {
-				content: "";
-				display: block;
-				width: 25px;
-				height: 40px;
-				position: absolute;
-				top: 45px;
-				background-color: ${props.theme.continueRangeBackColor}
-				transform: translate3d(10px, -45px, -1px);
-				
-				@media (min-width: 576px) {
-					height: 45px;
-				}
-			}
-		`};
+      border-radius: ${props.theme.daysRound} 0 0 ${props.theme.daysRound};
+    `};
 `;

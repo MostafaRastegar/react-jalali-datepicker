@@ -1,7 +1,7 @@
 import styled from "../../theme";
 
 export const DaysBody = styled("div")<{ isDatePicker?: boolean }>`
-  width: ${props => (props.isDatePicker ? "296px" : "280px")};
+  width: 100%;
   max-height: 85%;
   position: relative;
   overflow: auto;
@@ -40,30 +40,34 @@ export const StyledUl = styled("ul")`
   margin: 0;
   padding: 0;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 22px;
   li {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    margin: 0;
+    width: 30px;
+    height: 30px;
+    margin: 0 8px;
     padding: 0;
-
-    @media (min-width: 576px) {
-      width: 45px;
-      height: 45px;
-    }
   }
 `;
 
 export const DaysNameList = styled(StyledUl)`
   align-items: center;
+  margin-bottom: 16px;
   color: ${props => props.theme.weekDaysColor};
+  li {
+    font-weight: 14px;
+  }
 `;
 
 export const DaysNumberList = styled(StyledUl)`
+  margin-bottom: 15px;
   li {
-    margin-bottom: 0.5rem;
+    font-weight: 300;
+    font-size: 13px;
   }
 `;
 

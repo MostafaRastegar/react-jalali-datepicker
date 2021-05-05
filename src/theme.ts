@@ -5,30 +5,30 @@ export const defaultRangeTheme: IRangeDatePickerTheme = {
   backColor: "#FFFFFF",
   // head
   headBackColor: "#FFFFFF",
-  headTitleColor: "#aeaeae",
+  headTitleColor: "rgb(28,28,28)",
   headArrowColor: "#000",
   headRangeBackColor: "#D6D6D6",
-  headRangeColor: "#000",
+  headRangeColor: "rgb(150,150,150)",
 
   // weekdays color
-  weekDaysColor: "#3F3F3F",
+  weekDaysColor: "rgb(120,120,120)",
 
   // days
   daysColor: "#000",
   daysBackColor: "#FFFFFF",
-  holidaysColor: "#F50057",
+  holidaysColor: "rgb(190,85,85)",
   holidaysBackColor: "#FFFFFF",
-  daysRound: "50%",
+  daysRound: "5px",
 
   // start end
-  startRangeBackColor: "#D6D6D6",
-  startRangeColor: "#000",
-  endRangeBackColor: "#D6D6D6",
-  endRangeColor: "#000",
-  continueRangeBackColor: "#f3f3f3",
+  startRangeBackColor: "rgb(0,135,224)",
+  endRangeBackColor: "rgb(0,135,224)",
+  startRangeColor: "#fff",
+  endRangeColor: "#fff",
+  continueRangeBackColor: "rgb(239,246,255)",
   continueRangeColor: "#000",
   sameRangeBackColor: "#fff",
-  sameRangeColor: "#2979ff",
+  sameRangeColor: "rgb(33,213,176)",
 
   // buttons
   submitBackColor: "#D6D6D6",
@@ -59,7 +59,6 @@ export const defaultDatePickerTheme: IDatePickerTheme = {
   daysBackColor: "#FFFFFF",
   holidaysColor: "#edb53b",
   holidaysBackColor: "#FFFFFF",
-  daysRound: "50%",
 
   selectDayColor: "#fff",
   selectDayBackColor: "#617fdf",
