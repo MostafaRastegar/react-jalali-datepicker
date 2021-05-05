@@ -1,6 +1,6 @@
 import * as React from "react";
 import { render } from "react-dom";
-import { DatePicker } from "../src";
+import { RangeDatePicker } from "../src";
 
 // my favorite theme 😌
 const theme = {
@@ -43,8 +43,13 @@ const theme = {
 };
 
 render(
-  <DatePicker
-  // timePicker={false} // to disable timePicker
+  <RangeDatePicker
+    showModal={false}
+    showInputs={false}
+    isRenderingButtons={false}
+    onChangeDays={(props) => {
+      console.log(props);
+    }}
   />,
   document.getElementById("root"),
 );
