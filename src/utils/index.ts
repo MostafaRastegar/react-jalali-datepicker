@@ -20,7 +20,7 @@ export const weekDayNames = ["ش", "ی", "د", "س", "چ", "پ", "ج"];
 // format jalali string date into moment
 export const formatJalaliDate = date => {
   const formattedDate = moment(`${date}`, "jYYYY/jMM/jDD");
-  formattedDate['timestamp'] = moment(`${date}`, "jYYYY/jMM/jDD").format('x')
+  // formattedDate['timestamp'] = moment(`${date}`, "jYYYY/jMM/jDD").format('x')
   if (formattedDate.isValid()) {
     return formattedDate;
   }

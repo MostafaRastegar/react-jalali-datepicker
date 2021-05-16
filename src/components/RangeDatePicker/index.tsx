@@ -81,8 +81,8 @@ export class RangeDatePicker extends React.Component<
 
       if (this.props.onChangeDays) {
         this.props.onChangeDays({
-          start: start,
-          end: end,
+          start,
+          end,
           startX: start.format("x"),
           endX: end.format("x"),
         });

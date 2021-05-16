@@ -105,7 +105,7 @@ describe("RangeDatePicker days test", () => {
     fireEvent.click(inputStart);
     const daysHeadRange = getByTestId("days-head-range");
 
-    expect(daysHeadRange.textContent).toBe("10 تا 20 دی ماه");
+    expect(daysHeadRange.textContent).toBe("بازه انتخابی: 10 تا 20 دی ماه");
   });
 });
 
@@ -168,7 +168,7 @@ describe("arrows component test ", () => {
     );
 
     const daysHeadRange = getByTestId("days-head-range");
-    expect(daysHeadRange.textContent).toEqual("12 دی تا 08 بهمن");
+    expect(daysHeadRange.textContent).toEqual("بازه انتخابی: 12 دی تا 08 بهمن");
   });
 });
 
