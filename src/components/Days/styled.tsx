@@ -2,9 +2,7 @@ import styled from "../../theme";
 
 export const DaysBody = styled("div")<{ isDatePicker?: boolean }>`
   width: 100%;
-  max-height: 85%;
   position: relative;
-  overflow: auto;
   border-radius: ${8 / 16}rem;
   background-color: ${props => props.theme.backColor};
   & * {
