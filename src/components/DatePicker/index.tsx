@@ -31,7 +31,10 @@ export class DatePicker extends React.PureComponent<
     weekend: [6],
     DateIcon: Icons.DateIcon,
     ClockIcon: Icons.ClockIcon,
+    isRenderingButtons: true,
     className: "dp__input",
+    showModal: true,
+    showInputs: true,
   };
 
   constructor(props) {
@@ -67,6 +70,9 @@ export class DatePicker extends React.PureComponent<
       this.setState({
         dayStatus: datePickerStatus(moment(this.state.value)),
       });
+      if (this.props.onChangeDate) {
+        this.onChangeDate();
+      }
     }
     if (!prevState.cloneDays.isSame(this.state.cloneDays)) {
       const { monthName, days } = daysInMonth(this.state.cloneDays);
@@ -152,6 +158,49 @@ export class DatePicker extends React.PureComponent<
       initialValue: this.state.value,
     });
   };
+  public onChangeDate = () => {
+    const { value } = this.state;
+    if (this.props.onChangeDate) {
+      this.props.onChangeDate(value.format("x"));
+    }
+  };
+
+  public RenderDays = ({
+    theme,
+    ArrowLeft,
+    ArrowRight,
+    DateIcon,
+    ClockIcon,
+    timePicker,
+  }) => (
+    <Days
+      days={this.state.days}
+      monthName={this.state.monthName}
+      selectedPickerStatus={this.state.dayStatus}
+      selectedDay={this.state.value.format("jYYYY/jMM/jDD")}
+      daysEventListeners={this.daysEventListeners}
+      holiday={this.props.weekend}
+      theme={theme}
+      isRenderingButtons={this.props.isRenderingButtons}
+      ArrowLeft={ArrowLeft}
+      ArrowRight={ArrowRight}
+      DateIcon={DateIcon}
+      ClockIcon={ClockIcon}
+      increaseMonth={() => this.changeMonth(1)}
+      decreaseMonth={() => this.changeMonth(-1)}
+      toggleView={this.toggleTimePickerView}
+      timePickerView={this.state.timePickerView}
+      hour={this.state.hour}
+      minute={this.state.minute}
+      changeHour={this.changeHour}
+      changeMinute={this.changeMinute}
+      onCancelButton={this.cancelButton}
+      onSubmitButton={this.submitButton}
+      onChangeDate={this.onChangeDate}
+      timePicker={timePicker}
+      isDatePicker
+    />
+  );
   public render(): React.ReactNode {
     const {
       modalZIndex,
@@ -167,50 +216,46 @@ export class DatePicker extends React.PureComponent<
     return (
       <DatePickerDiv>
         <label>{label}</label>
-        <div>
-          <MaskedInput
-            className={className}
-            data-testid="input-dp"
-            value={this.state.value.format(
-              timePicker ? formatDateTime : formatDate,
-            )}
-            mask={timePicker ? inputFaDateWithTimeMask : inputFaDateMask}
-            onClick={this.toggleModalOpen}
-            style={{ direction: "ltr" }}
-          />
-        </div>
-        <Modal
-          isOpen={this.state.isOpenModal}
-          toggleOpen={this.toggleModalOpen}
-          modalZIndex={modalZIndex}
-        >
-          <Days
-            days={this.state.days}
-            monthName={this.state.monthName}
-            selectedPickerStatus={this.state.dayStatus}
-            selectedDay={this.state.value.format("jYYYY/jMM/jDD")}
-            daysEventListeners={this.daysEventListeners}
-            holiday={this.props.weekend}
+        {this.props.showInputs && (
+          <div>
+            <MaskedInput
+              className={className}
+              data-testid="input-dp"
+              value={this.state.value.format(
+                timePicker ? formatDateTime : formatDate,
+              )}
+              mask={timePicker ? inputFaDateWithTimeMask : inputFaDateMask}
+              onClick={this.toggleModalOpen}
+              style={{ direction: "ltr" }}
+            />
+          </div>
+        )}
+        {this.props.showModal && (
+          <Modal
+            isOpen={this.state.isOpenModal}
+            toggleOpen={this.toggleModalOpen}
+            modalZIndex={modalZIndex}
+          >
+            <this.RenderDays
+              theme={theme}
+              ArrowLeft={ArrowLeft}
+              ArrowRight={ArrowRight}
+              DateIcon={DateIcon}
+              ClockIcon={ClockIcon}
+              timePicker={timePicker}
+            />
+          </Modal>
+        )}
+        {!this.props.showModal && (
+          <this.RenderDays
             theme={theme}
-            isRenderingButtons={true}
             ArrowLeft={ArrowLeft}
             ArrowRight={ArrowRight}
             DateIcon={DateIcon}
             ClockIcon={ClockIcon}
-            increaseMonth={() => this.changeMonth(1)}
-            decreaseMonth={() => this.changeMonth(-1)}
-            toggleView={this.toggleTimePickerView}
-            timePickerView={this.state.timePickerView}
-            hour={this.state.hour}
-            minute={this.state.minute}
-            changeHour={this.changeHour}
-            changeMinute={this.changeMinute}
-            onCancelButton={this.cancelButton}
-            onSubmitButton={this.submitButton}
             timePicker={timePicker}
-            isDatePicker
           />
-        </Modal>
+        )}
       </DatePickerDiv>
     );
   }

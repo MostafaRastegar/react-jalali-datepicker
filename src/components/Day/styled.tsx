@@ -6,7 +6,7 @@ export const NormalDay = styled("li")<IDayProps>`
   cursor: pointer;
   position: relative;
   transform-style: preserve-3d;
-  border-radius: 0;
+  border-radius: 5px;
   color: ${props =>
     props.selectedDay ? props.theme.selectDayColor : props.theme.daysColor};
   background-color: ${props =>

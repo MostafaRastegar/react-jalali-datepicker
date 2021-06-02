@@ -45,19 +45,19 @@ export const defaultDatePickerTheme: IDatePickerTheme = {
   backColor: "#FFFFFF",
   // head
   headBackColor: "#FFFFFF",
-  headTitleColor: "#aeaeae",
+  headTitleColor: "rgb(28,28,28)",
   headTimeTitleColor: "#617fdf",
   headArrowColor: "#000",
   headRangeBackColor: "#D6D6D6",
-  headRangeColor: "#000",
+  headRangeColor: "rgb(150,150,150)",
 
   // weekdays color
-  weekDaysColor: "#3F3F3F",
+  weekDaysColor: "rgb(120,120,120)",
 
   // days
   daysColor: "#000",
   daysBackColor: "#FFFFFF",
-  holidaysColor: "#edb53b",
+  holidaysColor: "rgb(190,85,85)",
   holidaysBackColor: "#FFFFFF",
 
   selectDayColor: "#fff",

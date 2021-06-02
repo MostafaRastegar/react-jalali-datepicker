@@ -27,8 +27,8 @@ export const HeadTitle = styled("div")`
   color: ${props => props.theme.headTitleColor};
 
   svg {
-    fill: ${props => props.theme.startRangeBackColor};
-    font-size: 24px;
+    fill: rgb(0, 135, 224);
+    font-size: 28px;
   }
   @media (min-width: 768px) {
     font-size: 1.618rem;

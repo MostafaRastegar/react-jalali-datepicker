@@ -15,9 +15,12 @@ export interface IDatePickerProps {
   isRenderingButtons?: boolean;
   timePicker?: boolean;
   onClickSubmitButton?: (arg: any) => any;
+  onChangeDate?: (arg: any) => any;
   label: string;
   className: string | object;
   open?: boolean;
+  showModal?: boolean;
+  showInputs?: boolean;
   onToggle?: (arg?: boolean) => any;
 }
 
