@@ -46,7 +46,7 @@ export const defaultDatePickerTheme: IDatePickerTheme = {
   // head
   headBackColor: "#FFFFFF",
   headTitleColor: "rgb(28,28,28)",
-  headTimeTitleColor: "#617fdf",
+  headTimeTitleColor: "rgb(0,135,224)",
   headArrowColor: "#000",
   headRangeBackColor: "#D6D6D6",
   headRangeColor: "rgb(150,150,150)",
@@ -61,7 +61,7 @@ export const defaultDatePickerTheme: IDatePickerTheme = {
   holidaysBackColor: "#FFFFFF",
 
   selectDayColor: "#fff",
-  selectDayBackColor: "#617fdf",
+  selectDayBackColor: "rgb(0,135,224)",
 
   // buttons
   submitBackColor: "#D6D6D6",
@@ -75,12 +75,12 @@ export const defaultDatePickerTheme: IDatePickerTheme = {
   changeViewButtonBackColor: "#D6D6D6",
   changeViewButtonHoverBackColor: "#fff",
   changeViewButtonColor: "#000",
-  changeViewButtonHoverColor: "#617fdf",
+  changeViewButtonHoverColor: "rgb(0,135,224)",
   // time
   timeBackColor: "#f0f0f0",
   timeNumberColor: "#000",
-  handBackColor: "#617fdf",
-  handCircleColor: "#617fdf",
+  handBackColor: "rgb(0,135,224)",
+  handCircleColor: "rgb(0,135,224)",
   selectedNumberColor: "#fff",
 };
 
